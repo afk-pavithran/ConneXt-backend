@@ -29,7 +29,7 @@ const logUser = async (req, res, next) => {
         {
             if(checkUser.password === password)
             {
-                res.cookie('token', checkUser.id)
+                res.cookie('token', checkUser.id, {httpOnly: true})
                 res.json({msg: 'login success', id: checkUser.id})
             }
             else throw 'wrong credentials'
