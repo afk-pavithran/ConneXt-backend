@@ -2,8 +2,10 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors')
-// const { MONGO_URI } = require('./config');
+const { MONGO_URI } = require('./config');
 const userRouter = require('./Routes/userRoutes');
+const postRouter = require('./Routes/postRoute');
+const commentRouter = require('./Routes/commentRoute');
 
 
 
@@ -15,6 +17,11 @@ app.use(express.json())
 //register & login
 app.get('/', (req, res) => res.json('Deployed'))
 app.use('/', userRouter)
+
+app.use('/', postRouter)
+
+
+app.use('/', commentRouter)
 
 
 

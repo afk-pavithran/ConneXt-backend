@@ -6,10 +6,10 @@ const userRouter = express.Router();
 
 
 //register route
-userRouter.post('/api/user', regUser)
+userRouter.post('/api/register', regUser)
 
 //login route
-userRouter.get('/api/user', logUser)
+userRouter.post('/api/login', logUser)
 
 
 
