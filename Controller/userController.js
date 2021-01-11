@@ -12,11 +12,9 @@ const regUser = async (req, res, next) => {
             res.cookie('token', user.id)
             res.json({msg: 'register success', id: user.id})
         }
-        else {
-            res.json('mongo error')
-        }
+        else throw 'something went wrong'
     } catch (error) {
-        res.json(error)
+        res.status(400).json(error)
     }
 
 }
@@ -34,14 +32,10 @@ const logUser = async (req, res, next) => {
                 res.cookie('token', checkUser.id)
                 res.json({msg: 'login success', id: checkUser.id})
             }
-            else{
-                res.json('wrong password')
-            }
-        }else {
-            res.json('user not found')
-        }
+            else throw 'wrong credentials'
+        }else throw 'wrong credentials'
     } catch (error) {
-        res.json(error)
+        res.status(400).json(error)
     }
 
 }

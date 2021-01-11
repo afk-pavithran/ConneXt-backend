@@ -19,7 +19,7 @@ const createPost = async(req, res, next) => {
         }   
         else throw 'user not found'
     } catch (error) {
-        res.json(error)
+        res.status(400).json(error)
     }
 }
 
@@ -34,7 +34,7 @@ const getPosts = async (req, res, next) => {
         }
         else throw 'user not found'
     } catch (error) {
-        res.json(error)
+        res.status(400).json(error)
     }
 }
 
@@ -51,7 +51,7 @@ const getSinglePost = async (req, res, next) => {
         }
         else throw 'user not found'
     } catch (error) {
-        res.json(error)
+        res.status(400).json(error)
     }
 }
 

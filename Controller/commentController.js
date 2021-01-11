@@ -17,7 +17,7 @@ const postComment = async (req, res, next) => {
         }
         else throw 'error not found'
     } catch (error) {
-        res.json(error)
+        res.status(400).json(error)
     }
 }
 
