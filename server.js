@@ -1,8 +1,8 @@
 //imports
 const express = require('express');
-const mongoose = require('mongoose');
-const { MONGO_URI } = require('./config');
-const userRouter = require('./Routes/userRoutes');
+// const mongoose = require('mongoose');
+// const { MONGO_URI } = require('./config');
+// const userRouter = require('./Routes/userRoutes');
 
 
 
@@ -12,7 +12,7 @@ app.use(express.json())
 
 //register & login
 app.get('/', (req, res) => res.json('Deployed'))
-app.use('/', userRouter)
+// app.use('/', userRouter)
 
 
 
