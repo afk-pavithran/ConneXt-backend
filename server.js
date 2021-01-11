@@ -1,6 +1,7 @@
 //imports
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors')
 // const { MONGO_URI } = require('./config');
 const userRouter = require('./Routes/userRoutes');
 
@@ -8,6 +9,7 @@ const userRouter = require('./Routes/userRoutes');
 
 
 const app = express();
+app.use(cors())
 app.use(express.json())
 
 //register & login
