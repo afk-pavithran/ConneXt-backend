@@ -14,7 +14,7 @@ app.use(express.json())
 app.get('/', (req, res) => res.json('Deployed'))
 app.use('/', userRouter)
 
-
+app.get('/', (req, res) => res.json('Deployed'))
 
 
 app.listen(process.env.PORT || 4000, () => {
