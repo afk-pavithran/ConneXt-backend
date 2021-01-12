@@ -9,8 +9,8 @@ const regUser = async (req, res, next) => {
         const user = await UserModel.create({firstname, lastname, username, email, password})
         if(user)
         {
-            res.cookie('token', user.id)
-            res.json({msg: 'register success', id: user.id})
+            const token = await jwt.sign(user.id, process.env.JWT_SECRET || JWT_SECRET)
+            res.json({msg: 'register success', token})
         }
         else throw 'something went wrong'
     } catch (error) {
@@ -29,8 +29,8 @@ const logUser = async (req, res, next) => {
         {
             if(checkUser.password === password)
             {
-                res.cookie('token', checkUser.id, {httpOnly: true})
-                res.json({msg: 'login success', id: checkUser.id})
+                const token = await jwt.sign(user.id, process.env.JWT_SECRET || JWT_SECRET)
+                res.json({msg: 'login success', token})
             }
             else throw 'wrong credentials'
         }else throw 'wrong credentials'

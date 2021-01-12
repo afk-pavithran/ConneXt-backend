@@ -13,7 +13,6 @@ const commentRouter = require('./Routes/commentRoute');
 const app = express();
 app.use(cors())
 app.use(express.json())
-
 //register & login
 app.get('/', (req, res) => res.json('Deployed'))
 app.use('/', userRouter)

@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const { JWT_SECRET } = require('../config');
 const CommentModel = require('../Models/CommentModel');
 const PostModel = require('../Models/PostModel');
 const UserModel = require('../Models/UserModel')
@@ -10,7 +11,8 @@ const createPost = async(req, res, next) => {
     const {token} = req.headers;
     console.log(title, body, token)
     try {
-        const checkUser = await UserModel.findOne({_id: token})
+        const decoded = await jwt.verify(token, process.env.JWT_SECRET || JWT_SECRET)
+        const checkUser = await UserModel.findOne({_id: decoded})
         if(checkUser)
         {
             console.log(checkUser)
@@ -26,7 +28,8 @@ const createPost = async(req, res, next) => {
 const getPosts = async (req, res, next) => {
     const {token} = req.headers;
     try {
-        const checkUser = await UserModel.findOne({_id: token})
+        const decoded = await jwt.verify(token, process.env.JWT_SECRET || JWT_SECRET)
+        const checkUser = await UserModel.findOne({_id: decoded})
         if(checkUser)
         {
             const posts = await PostModel.find();
@@ -42,7 +45,8 @@ const getSinglePost = async (req, res, next) => {
     const postId = req.params.id;
     const {token} = req.headers;
     try {
-        const checkUser = await UserModel.findOne({_id: token})
+        const decoded = await jwt.verify(token, process.env.JWT_SECRET || JWT_SECRET)
+        const checkUser = await UserModel.findOne({_id: decoded})
         if(checkUser)
         {
             const post = await PostModel.findOne({_id: postId})
