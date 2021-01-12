@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+// const {JWT_SECRET} = require('../config')
 const jwt = require('jsonwebtoken');
 const UserModel = require('../Models/UserModel');
 
