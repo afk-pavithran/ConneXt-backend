@@ -30,7 +30,9 @@ const logUser = async (req, res, next) => {
         {
             if(checkUser.password === password)
             {
-                const token = await jwt.sign(user.id, process.env.JWT_SECRET || JWT_SECRET)
+                
+                const token = await jwt.sign(checkUser.id, process.env.JWT_SECRET || JWT_SECRET)
+                console.log(token)
                 res.json({msg: 'login success', token})
             }
             else throw 'wrong credentials'
